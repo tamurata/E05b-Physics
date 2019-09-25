@@ -14,7 +14,7 @@ MARGIN = 10
 NUM_BALLS = 20
 SCREEN_TITLE = "Gravity Exercise"
 
-GRAVITY = 0 #update this value
+GRAVITY = -9.8 #update this value
 
 
 class Ball():
