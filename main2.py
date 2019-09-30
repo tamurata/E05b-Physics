@@ -36,24 +36,30 @@ class Ball():
         self.y += self.dy
         if self.x <= MARGIN:
             self.x = MARGIN
+            self.dx = abs(self.dx)
+            
             #bounce dx
+        
 
             self.dx *= FRICTION
             self.dy *= FRICTION
         if self.x >= SCREEN_WIDTH - MARGIN:
             self.x = SCREEN_WIDTH - MARGIN
+            self.dx = abs(self.dx) * -1
             #bounce dx
 
             self.dx *= FRICTION
             self.dy *= FRICTION
         if self.y <= MARGIN:
             self.y = MARGIN
+            self.dy = abs(self.dy)
             #bounce dy
 
             self.dx *= FRICTION
             self.dy *= FRICTION
         if self.y >= SCREEN_HEIGHT - MARGIN:
             self.y = SCREEN_HEIGHT - MARGIN
+            self.dy = abs(self.dy) * -1
             #bounce dy
 
             self.dx *= FRICTION
@@ -84,7 +90,7 @@ class Window(arcade.Window):
 
     def update(self, delta_time):
         for b in self.ball_list:
-            # apply gravity here
+            b.accelerate(0,GRAVITY) # apply gravity here
             b.update()
 
     def on_draw(self):
